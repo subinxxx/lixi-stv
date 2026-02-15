@@ -3,150 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lì Xì May Mắn STV</title>
+
+<title>Lì Xì STV 2026</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family:'Be Vietnam Pro',sans-serif;
 }
 
 body{
     min-height:100vh;
-    background: linear-gradient(135deg,#ff3c3c,#ffcc00);
+    background:linear-gradient(135deg,#ff2d2d,#ffcc00);
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
-/* Container */
+/* Main box */
 .container{
     background:#fff;
-    width:90%;
-    max-width:420px;
+    width:95%;
+    max-width:450px;
+    padding:30px 25px 35px;
     border-radius:20px;
-    padding:30px 25px 40px;
     text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,0.25);
-    position:relative;
-    overflow:hidden;
-}
-
-/* Trang trí */
-.container::before{
-    content:"";
-    position:absolute;
-    width:200px;
-    height:200px;
-    background:rgba(255,215,0,0.3);
-    border-radius:50%;
-    top:-80px;
-    right:-80px;
-}
-
-.container::after{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    background:rgba(255,0,0,0.2);
-    border-radius:50%;
-    bottom:-70px;
-    left:-70px;
-}
-
-/* Logo */
-.logo{
-    font-size:50px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
 }
 
 /* Title */
 h1{
     color:#d40000;
     font-size:26px;
-    margin-top:10px;
-    font-weight:700;
+    margin-bottom:10px;
 }
 
 .subtitle{
-    margin:12px 0 25px;
-    color:#666;
     font-size:14px;
+    color:#666;
+    margin-bottom:25px;
 }
 
-/* Lì xì */
+/* Envelope area */
+.envelopes{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:25px;
+}
+
 .envelope{
-    width:150px;
-    height:200px;
-    background:linear-gradient(180deg,#ff1e1e,#cc0000);
-    margin:0 auto 25px;
+    flex:1;
+    height:160px;
+    background:linear-gradient(180deg,#ff1e1e,#c80000);
     border-radius:15px;
-    position:relative;
     cursor:pointer;
+    position:relative;
+    box-shadow:0 6px 15px rgba(0,0,0,0.25);
     transition:0.3s;
-    box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
 .envelope:hover{
-    transform:scale(1.05);
+    transform:translateY(-5px) scale(1.05);
 }
 
 .envelope::before{
     content:"🧧";
-    font-size:60px;
+    font-size:50px;
     position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
 }
 
-/* Button */
-button{
-    background:linear-gradient(135deg,#ffcc00,#ff9900);
-    border:none;
-    color:#000;
-    padding:14px 30px;
-    border-radius:30px;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    transition:0.3s;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(0,0,0,0.3);
-}
-
-button:disabled{
-    background:#ccc;
-    cursor:not-allowed;
-    box-shadow:none;
+/* Disabled */
+.envelope.disabled{
+    opacity:0.5;
+    pointer-events:none;
 }
 
 /* Result */
 .result{
-    margin-top:25px;
     min-height:60px;
-    font-size:20px;
+    font-size:22px;
     font-weight:700;
     color:#d40000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    animation:fadeIn 0.5s ease;
+    margin-top:10px;
 }
 
-/* Footer */
-.footer{
-    margin-top:25px;
-    font-size:12px;
-    color:#999;
+/* Info */
+.info{
+    margin-top:15px;
+    font-size:13px;
+    color:#888;
 }
 
 /* Animation */
@@ -158,14 +112,10 @@ button:disabled{
     100%{transform:rotate(0);}
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
 .shake{
     animation:shake 0.4s;
 }
+
 </style>
 </head>
 
@@ -173,70 +123,116 @@ button:disabled{
 
 <div class="container">
 
-    <div class="logo">🎉</div>
-
-    <h1>LÌ XÌ MAY MẮN STV</h1>
+    <h1>🧧 LÌ XÌ MAY MẮN STV 🧧</h1>
 
     <div class="subtitle">
-        Chúc mừng năm mới 2026 <br>
-        Bấm để mở bao lì xì nhận may mắn
+        Chọn 1 bao lì xì để nhận may mắn đầu năm
     </div>
 
-    <div class="envelope" id="envelope"></div>
+    <!-- Envelopes -->
+    <div class="envelopes">
 
-    <button id="openBtn" onclick="openLucky()">
-        MỞ LÌ XÌ
-    </button>
+        <div class="envelope" onclick="openLucky(this)"></div>
+        <div class="envelope" onclick="openLucky(this)"></div>
+        <div class="envelope" onclick="openLucky(this)"></div>
+
+    </div>
 
     <div class="result" id="result"></div>
 
-    <div class="footer">
-        © 2026 STV Team • Happy New Year 🧨
+    <div class="info">
+        ⏰ Mỗi người chỉ được rút 1 lần / ngày
     </div>
 
 </div>
 
+
 <script>
 
+/* Prize with rate (higher money = lower rate) */
 const gifts = [
-    { text: "🎉 Trúng 200.000đ", rate: 5 },
-    { text: "🎉 Trúng 100.000đ", rate: 10 },
+    { text: "🎉 Trúng 10.000đ", rate: 40 },
+    { text: "🎉 Trúng 20.000đ", rate: 30 },
     { text: "🎉 Trúng 50.000đ", rate: 20 },
-    { text: "🎁 Quà bí mật", rate: 15 },
-    { text: "😅 Chúc may mắn lần sau", rate: 50 }
+    { text: "🏆 Trúng 100.000đ", rate: 10 }
 ];
 
-const envelope = document.getElementById("envelope");
 const result = document.getElementById("result");
-const btn = document.getElementById("openBtn");
+const envelopes = document.querySelectorAll(".envelope");
 
-function openLucky(){
+/* Get today key */
+function getTodayKey(){
+    const d = new Date();
+    return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+}
 
-    btn.disabled = true;
+/* Check played today */
+function hasPlayedToday(){
+    return localStorage.getItem("lucky_"+getTodayKey());
+}
+
+/* Lock envelopes */
+function lockAll(){
+    envelopes.forEach(e=>{
+        e.classList.add("disabled");
+    });
+}
+
+/* Weighted random */
+function randomGift(){
+
+    let pool = [];
+
+    gifts.forEach(g=>{
+        for(let i=0;i<g.rate;i++){
+            pool.push(g.text);
+        }
+    });
+
+    let rand = Math.floor(Math.random()*pool.length);
+
+    return pool[rand];
+}
+
+/* Main function */
+function openLucky(el){
+
+    if(hasPlayedToday()){
+        result.innerHTML = "⚠️ Bạn đã rút hôm nay rồi. Hãy quay lại ngày mai nhé!";
+        lockAll();
+        return;
+    }
+
+    /* Animation */
+    el.classList.add("shake");
     result.innerHTML = "⏳ Đang mở lì xì...";
-    envelope.classList.add("shake");
 
     setTimeout(()=>{
 
-        envelope.classList.remove("shake");
+        el.classList.remove("shake");
 
-        let pool = [];
+        let gift = randomGift();
 
-        gifts.forEach(gift=>{
-            for(let i=0;i<gift.rate;i++){
-                pool.push(gift.text);
-            }
-        });
+        result.innerHTML = gift;
 
-        let random = Math.floor(Math.random()*pool.length);
-        let finalGift = pool[random];
+        /* Save played */
+        localStorage.setItem("lucky_"+getTodayKey(),"true");
 
-        result.innerHTML = finalGift;
+        lockAll();
 
-        btn.disabled = false;
-
-    },1000);
+    },800);
 }
+
+
+/* Auto check when load */
+window.onload = ()=>{
+
+    if(hasPlayedToday()){
+        result.innerHTML = "✅ Bạn đã rút hôm nay rồi. Hẹn gặp lại ngày mai!";
+        lockAll();
+    }
+
+};
 
 </script>
 
