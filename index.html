@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Lì Xì May Mắn STV</title>
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    background: linear-gradient(#ff4d4d,#ffcc00);
+    color: #fff;
+}
+
+.box {
+    margin-top: 100px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background: gold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>🧧 LÌ XÌ MAY MẮN STV 🧧</h1>
+    <p>Bấm để mở bao lì xì</p>
+
+    <button onclick="openLucky()">MỞ LÌ XÌ</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function openLucky() {
+
+    let gifts = [
+        "🎉 Trúng 100k!",
+        "🎉 Trúng 50k!",
+        "🎉 Trúng 20k!",
+        "🎁 Quà bí mật",
+        "😅 Chúc may mắn lần sau"
+    ];
+
+    let random = Math.floor(Math.random() * gifts.length);
+
+    document.getElementById("result").innerHTML = gifts[random];
+}
+</script>
+
+</body>
+</html>
